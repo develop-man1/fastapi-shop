@@ -24,7 +24,7 @@ class ProductService:
             )
         return ProductResponse.model_validate(product)
     
-    def products_by_category(self, category_id: int) -> ProductResponse:
+    def products_by_category(self, category_id: int) -> ProductListResponse:
         category = self.category_repository.get_by_id(category_id)
         if not category:
             raise HTTPException(
