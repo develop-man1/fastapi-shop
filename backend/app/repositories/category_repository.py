@@ -4,7 +4,7 @@ from ..models.category import Category
 from ..schemas.category import CategoryCreate
 
 class CategoryRepository:
-    def __int__(self, db: Session):
+    def __init__(self, db: Session):
         self.db = db
         
     def get_all(self) -> List[Category]:
@@ -14,7 +14,7 @@ class CategoryRepository:
         return self.db.query(Category).filter(Category.id == category_id).first()
     
     def get_by_slug(self, slug: str) -> Optional[Category]:
-        return self.db.query(Category).filter(Category.slug == slug).filter()
+        return (self.db.query(Category).filter(Category.slug == slug).first())
     
     def create(self, category_data: CategoryCreate) -> Category:
         db_category = Category(**category_data.model_dump())

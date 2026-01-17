@@ -26,7 +26,7 @@ class ProductRepository:
             .all()
         )
         
-    def get_multipe_by_ids(self, product_ids: List[int]) -> List[Product]:
+    def get_multiple_by_ids(self, product_ids: List[int]) -> List[Product]:
         return (
             self.db.query(Product)
             .options(joinedload(Product.category))
